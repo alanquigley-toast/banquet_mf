@@ -1,0 +1,22 @@
+{
+  "name": "banquet-v2-mf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "./App1/",
+    "./App2/"
+  ],
+  "scripts": {
+    "start": "concurrently \"wsrun --parallel -m start\""
+  },
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "wsrun": "^5.2.4"
+  },
+  "devDependencies": {
+    "@toasttab/eslint-plugin-toast": "^1.2.2",
+    "eslint": "^7.14.0"
+  }
+}
