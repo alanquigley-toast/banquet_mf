@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
+// const { classnames, ...deps } = require('./package.json').dependencies
 const deps = require('./package.json').dependencies
 
 module.exports = {
@@ -15,17 +16,17 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'app_01',
       filename: 'remoteEntry.js',
-      // library: { type: 'system', name: 'App2' },
       library: { type: 'var', name: 'app_01' },
       exposes: { './App': './src/App' },
       shared: {
-        ...deps,
         react: {
           singleton: true
         },
         'react-dom': {
           singleton: true
-        }
+        },
+        ...deps
+        // classnames: '^2.2.6'
       }
     })
   ],

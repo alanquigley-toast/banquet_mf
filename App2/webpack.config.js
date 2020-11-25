@@ -1,10 +1,11 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
+// const { classnames, ...deps } = require('./package.json').dependencies
 const deps = require('./package.json').dependencies
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     index: './src/index.js'
   },
@@ -33,13 +34,14 @@ module.exports = {
         app_01: 'app_01'
       },
       shared: {
-        ...deps,
         react: {
           singleton: true
         },
         'react-dom': {
           singleton: true
-        }
+        },
+        ...deps
+        // classnames: '^2.2.6'
       }
     })
   ],
