@@ -5,7 +5,7 @@ const deps = require('./package.json').dependencies
 module.exports = {
   mode: 'development',
   devServer: {
-    port: 8081,
+    port: 8082,
     hot: true
   },
   plugins: [
@@ -13,20 +13,13 @@ module.exports = {
       template: './public/index.html'
     }),
     new ModuleFederationPlugin({
-      name: 'child_spa',
+      name: 'child_non_react_spa',
       filename: 'remoteEntry.js',
-      library: { type: 'var', name: 'child_spa' },
+      library: { type: 'var', name: 'child_non_react_spa' },
       exposes: {
-        './App': './src/App',
         './Banquet': './src/Banquet'
       },
       shared: {
-        react: {
-          singleton: true
-        },
-        'react-dom': {
-          singleton: true
-        },
         ...deps
       }
     })
@@ -39,7 +32,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
+            presets: ['@babel/preset-env']
           }
         }
       },

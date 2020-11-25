@@ -15,7 +15,7 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    port: 8081,
+    port: 8080,
     hot: true
   },
   plugins: [
@@ -31,7 +31,11 @@ module.exports = {
       // By using the global we can specify the remoteEntry files in the html, rather than
       // the webpack config. I believe this is a more suitable approach for Toast.
       remotes: {
-        child_spa: 'child_spa'
+        child_spa: 'child_spa',
+        child_non_react_spa: 'child_non_react_spa'
+      },
+      exposes: {
+        'styles.css': './src/index.css'
       },
       shared: {
         react: {

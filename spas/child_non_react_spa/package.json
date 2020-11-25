@@ -1,5 +1,5 @@
 {
-  "name": "parent_spa",
+  "name": "child_non_react_spa",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -8,27 +8,19 @@
     "build": "webpack"
   },
   "devDependencies": {
-    "postcss": "^8.1.10",
     "@babel/core": "^7.12.8",
     "@babel/preset-env": "^7.12.7",
     "@babel/preset-react": "^7.12.7",
-    "clean-webpack-plugin": "^3.0.0",
-    "html-webpack-plugin": "^4.5.0",
     "babel-loader": "^8.2.1",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.1",
+    "html-webpack-plugin": "^4.5.0",
     "style-loader": "^2.0.0",
-    "postcss-loader": "^4.1.0",
     "webpack": "^5.6.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@toasttab/buffet-pui-buttons": "^0.3.3",
-    "@toasttab/buffet-pui-styles": "^0.3.2",
-    "classnames": "^2.2.6",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "single-spa": "^5.8.2",
-    "single-spa-react": "^3.2.0"
+    "single-spa-html": "^1.1.2"
   }
 }

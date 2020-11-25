@@ -6,10 +6,10 @@
   "license": "UNLICENSED",
   "private": false,
   "dependencies": {
+    "postcss": "^8.1.10",
     "tailwindcss": "^2.0.1",
     "postcss-easy-import": "^3.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
-    "postcss-loader": "^4.1.0",
     "postcss-nested": "^5.0.1",
     "postcss-preset-env": "^6.7.0",
     "postcss-reporter": "^7.0.1",
