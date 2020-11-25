@@ -1,5 +1,5 @@
 {
-  "name": "app_01",
+  "name": "parent_spa",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "classnames": "^2.2.6",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "single-spa": "^5.8.2",
     "single-spa-react": "^3.2.0"
   }
 }

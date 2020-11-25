@@ -5,8 +5,8 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "./App1",
-    "./App2"
+    "./child_spa/",
+    "./parent_spa/"
   ],
   "scripts": {
     "start": "concurrently \"wsrun --parallel -m start\"",

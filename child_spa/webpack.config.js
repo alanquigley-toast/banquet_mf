@@ -1,21 +1,11 @@
-const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
-// const { classnames, ...deps } = require('./package.json').dependencies
 const deps = require('./package.json').dependencies
 
 module.exports = {
   mode: 'development',
-  entry: {
-    index: './src/index.js'
-  },
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  devtool: 'inline-source-map',
   devServer: {
-    port: 8081,
+    port: 8080,
     hot: true
   },
   plugins: [
@@ -23,15 +13,12 @@ module.exports = {
       template: './public/index.html'
     }),
     new ModuleFederationPlugin({
-      name: 'app_02',
+      name: 'child_spa',
       filename: 'remoteEntry.js',
-      // This is required if you want to attach the library to the window object - with this
-      // approach care should be taken to avoid global naming conflicts.
-      library: { type: 'var', name: 'app_02' },
-      // By using the global we can specify the remoteEntry files in the html, rather than
-      // the webpack config. I believe this is a more suitable approach for Toast.
-      remotes: {
-        app_01: 'app_01'
+      library: { type: 'var', name: 'child_spa' },
+      exposes: {
+        './App': './src/App',
+        './Banquet': './src/Banquet'
       },
       shared: {
         react: {
@@ -41,7 +28,6 @@ module.exports = {
           singleton: true
         },
         ...deps
-        // classnames: '^2.2.6'
       }
     })
   ],
