@@ -5,8 +5,7 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "./child_spa/",
-    "./parent_spa/",
+    "./spas/*",
     "packages/*"
   ],
   "scripts": {
