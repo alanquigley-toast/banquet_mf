@@ -1,13 +1,16 @@
 import React from 'react'
-import App1 from 'app_01/App'
 import { Button } from '@toasttab/buffet-pui-buttons'
-import cx from 'classnames'
+import Parcel from 'single-spa-react/parcel'
+import { mountRootParcel } from 'single-spa'
 
 export function App() {
   return (
     <div>
       <h1>hello world</h1>
-      <App1 />
+      <Parcel
+        mountParcel={mountRootParcel}
+        config={() => import('app_01/Banquet')}
+      />
       <Button>App2 Button</Button>
     </div>
   )

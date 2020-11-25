@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
-// const { classnames, ...deps } = require('./package.json').dependencies
 const deps = require('./package.json').dependencies
 
 module.exports = {
@@ -17,7 +16,10 @@ module.exports = {
       name: 'app_01',
       filename: 'remoteEntry.js',
       library: { type: 'var', name: 'app_01' },
-      exposes: { './App': './src/App' },
+      exposes: {
+        './App': './src/App',
+        './Banquet': './src/Banquet'
+      },
       shared: {
         react: {
           singleton: true
@@ -26,7 +28,6 @@ module.exports = {
           singleton: true
         },
         ...deps
-        // classnames: '^2.2.6'
       }
     })
   ],
