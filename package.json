@@ -5,12 +5,12 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "./spas/*",
-    "packages/*"
+    "spas/*",
+    "packages/*",
+    "server/"
   ],
   "scripts": {
-    "start": "concurrently \"wsrun --parallel -m start\"",
-    "install": "concurrently \"wsrun --parallel -m install\""
+    "start": "concurrently \"wsrun --parallel -m start\""
   },
   "dependencies": {
     "concurrently": "^5.3.0",

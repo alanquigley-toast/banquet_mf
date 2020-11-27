@@ -5,6 +5,7 @@ const deps = require('./package.json').dependencies
 module.exports = {
   mode: 'development',
   devServer: {
+    quiet: true,
     port: 8081,
     hot: true
   },
@@ -17,7 +18,6 @@ module.exports = {
       filename: 'remoteEntry.js',
       library: { type: 'var', name: 'child_spa' },
       exposes: {
-        './App': './src/App',
         './Banquet': './src/Banquet'
       },
       shared: {
@@ -25,6 +25,9 @@ module.exports = {
           singleton: true
         },
         'react-dom': {
+          singleton: true
+        },
+        '@toasttab/buffet-pui-styles': {
           singleton: true
         },
         ...deps

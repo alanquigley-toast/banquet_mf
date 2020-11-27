@@ -15,6 +15,7 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
+    quiet: true,
     port: 8080,
     hot: true
   },
@@ -32,16 +33,17 @@ module.exports = {
       // the webpack config. I believe this is a more suitable approach for Toast.
       remotes: {
         child_spa: 'child_spa',
-        child_non_react_spa: 'child_non_react_spa'
-      },
-      exposes: {
-        'styles.css': './src/index.css'
+        child_non_react_spa: 'child_non_react_spa',
+        apollo_library_spa: 'apollo_library_spa'
       },
       shared: {
         react: {
           singleton: true
         },
         'react-dom': {
+          singleton: true
+        },
+        '@toasttab/buffet-pui-styles': {
           singleton: true
         },
         ...deps
