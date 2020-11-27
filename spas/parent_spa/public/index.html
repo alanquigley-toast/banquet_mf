@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Getting Started</title>
-        <script src="http://localhost:8081/remoteEntry.js"></script>
-        <script src="http://localhost:8082/remoteEntry.js"></script>
-        <script src="http://localhost:8083/remoteEntry.js"></script>
-    </head>
-    <body>
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title>Getting Started</title>
+
+    <script type="systemjs-importmap">
+          {
+            "imports": {
+              "parent_spa": "http://localhost:8080/remoteEntry.js",
+              "parent_spa/": "http://localhost:8080/",
+              
+              "child_spa": "http://localhost:8081/remoteEntry.js",
+              "child_spa/": "http://localhost:8081/",
+              
+              "child_non_react_spa": "http://localhost:8082/remoteEntry.js",
+              "child_non_react_spa/": "http://localhost:8082/",
+              
+              "apollo_library_spa": "http://localhost:8083/remoteEntry.js",
+              "apollo_library_spa/": "http://localhost:8083/"
+            }
+          }
+        </script>
+</head>
+
+<body>
+    <script src="https://unpkg.com/systemjs/dist/system.js"></script>
     <div id="root"></div>
+        <script>
+          System.import('parent_spa/bundle.js')
+        </script>
 </body>
 
 </html>

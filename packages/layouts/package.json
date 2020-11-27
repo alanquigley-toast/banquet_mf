@@ -16,7 +16,6 @@
     "react-dom": "16.x"
   },
   "dependencies": {
-    "single-spa": "^5.8.2",
-    "single-spa-react": "^3.2.0"
+    "@toasttab/banquet-tools": "0.0.1"
   }
 }

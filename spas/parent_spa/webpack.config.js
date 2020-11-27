@@ -9,15 +9,23 @@ module.exports = {
   entry: {
     index: './src/index.js'
   },
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  },
   devtool: 'inline-source-map',
   devServer: {
     quiet: true,
     port: 8080,
-    hot: true
+    hot: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers':
+        'X-Requested-With, content-type, Authorization'
+    }
+  },
+  output: {
+    filename: 'bundle.js',
+    libraryTarget: 'system',
+    publicPath: 'http://localhost:8080/',
+    path: path.resolve(__dirname, 'dist')
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -28,7 +36,8 @@ module.exports = {
       filename: 'remoteEntry.js',
       // This is required if you want to attach the library to the window object - with this
       // approach care should be taken to avoid global naming conflicts.
-      library: { type: 'var', name: 'parent_spa' },
+      // library: { type: 'var', name: 'parent_spa' },
+      library: { type: 'system' },
       // By using the global we can specify the remoteEntry files in the html, rather than
       // the webpack config. I believe this is a more suitable approach for Toast.
       remotes: {

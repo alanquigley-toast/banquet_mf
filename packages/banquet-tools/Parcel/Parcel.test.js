@@ -1,15 +1,15 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { Demo } from './Demo'
+import { Parcel } from './Parcel'
 
-describe('<Demo />', () => {
+describe('<Parcel />', () => {
   it('should render', () => {
-    const { container } = render(<Demo>Hello World</Demo>)
+    const { container } = render(<Parcel>Hello World</Parcel>)
     expect(container.firstChild).toBeTruthy()
   })
 
   it.skip('should have a test-id', () => {
-    const { container } = render(<Demo testId='my-test-id' />)
+    const { container } = render(<Parcel testId='my-test-id' />)
     expect(container.firstChild).toHaveAttribute('data-testid', 'my-test-id')
   })
 

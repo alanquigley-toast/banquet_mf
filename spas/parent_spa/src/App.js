@@ -7,8 +7,6 @@ import Books from 'apollo_library_spa/Books'
 
 import { GridLayout } from '@toasttab/buffet-pui-layouts'
 
-// console.log(GridLayout)
-
 export function App() {
   return (
     <MyApolloProvider>
@@ -62,7 +60,14 @@ export function App() {
           <p className='font-bold'>apollo_library_spa/Books</p>
           <Books />
         </div>
-        <GridLayout slotA={{ name: 'child_spa/Banquet' }} />
+        <GridLayout
+          slotA={{ config: () => import('child_spa/Banquet') }}
+          slotB={{ config: () => import('child_spa/Banquet') }}
+          slotC={{
+            config: () => import('child_non_react_spa/Banquet'),
+            props: { description: 'single-spa-html' }
+          }}
+        />
       </div>
     </MyApolloProvider>
   )

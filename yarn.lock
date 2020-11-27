@@ -2112,6 +2112,11 @@
   dependencies:
     lodash "^4.17.19"
 
+"@toasttab/buffet-pui-loading-indicators@^0.1.2":
+  version "0.1.2"
+  resolved "https://nexus.eng.toasttab.com/repository/toast_npm/@toasttab/buffet-pui-loading-indicators/-/buffet-pui-loading-indicators-0.1.2.tgz#819c5f09cb12f3928a6e87fcbc293d115279fc42"
+  integrity sha512-+J1zGXyullhTdblk8TEyrLpASZI5MOzIudPndJou19E11ufL2PfhxqKvNaQSY9t2MTeagf7RBUnGkG6iamiQmw==
+
 "@toasttab/buffet-pui-styles@^0.3.2":
   version "0.3.2"
   resolved "https://nexus.eng.toasttab.com/repository/toast_npm/@toasttab/buffet-pui-styles/-/buffet-pui-styles-0.3.2.tgz#75aa157a2f6284f91f5e35ac40c772b24332d834"

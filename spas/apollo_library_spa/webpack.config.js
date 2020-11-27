@@ -7,7 +7,17 @@ module.exports = {
   devServer: {
     quiet: true,
     port: 8083,
-    hot: true
+    hot: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers':
+        'X-Requested-With, content-type, Authorization'
+    }
+  },
+  output: {
+    publicPath: 'http://localhost:8083/',
+    libraryTarget: 'system'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -16,7 +26,8 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'apollo_library_spa',
       filename: 'remoteEntry.js',
-      library: { type: 'var', name: 'apollo_library_spa' },
+      // library: { type: 'var', name: 'apollo_library_spa' },
+      library: { type: 'system' },
       exposes: {
         './MyApolloProvider': './src/MyApolloProvider',
         './Books': './src/Books'
