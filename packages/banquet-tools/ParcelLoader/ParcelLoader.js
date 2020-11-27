@@ -1,31 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Parcel from 'single-spa-react/parcel'
-import { MerryGoRound } from '@toasttab/buffet-pui-loading-indicators'
 import { mountRootParcel } from 'single-spa'
-import { string } from 'prop-types'
+import { MerryGoRound } from '@toasttab/buffet-pui-loading-indicators'
+import { useQuery } from 'react-query'
+export const ParcelLoader = ({ name, children, className, customProps }) => {
+  const systemQuery = () => global.System.import(name)
 
-export const ParcelLoader = ({ name, className, ...props }) => {
-  const [config, configSet] = useState(null)
+  const { isLoading, data, error } = useQuery(name, systemQuery)
 
-  useEffect(() => {
-    global.System.import(name).then(config => configSet(config))
-  }, [name])
-
-  if (!config) {
-    return <MerryGoRound />
+  if (isLoading) {
+    return (
+      <div className='fixed inset-0'>
+        <div className='absolute pin-center'>
+          <MerryGoRound />
+        </div>
+      </div>
+    )
+  }
+  if (error) {
+    return <div>Problem loading SPA</div>
   }
 
   return (
     <Parcel
-      wrapClassName={className}
+      {...customProps}
       mountParcel={mountRootParcel}
-      config={config}
-      {...props}
-    />
+      wrapClassName={className}
+      config={data}
+    >
+      {children}
+    </Parcel>
   )
-}
-
-ParcelLoader.propTypes = {
-  name: string,
-  className: string
 }

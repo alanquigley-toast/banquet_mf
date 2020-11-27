@@ -5,7 +5,7 @@ const deps = require('./package.json').dependencies
 module.exports = {
   mode: 'development',
   devServer: {
-    quiet: true,
+    quiet: false,
     port: 8082,
     hot: true,
     headers: {
@@ -38,6 +38,11 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        parser: {
+          system: false
+        }
+      },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,

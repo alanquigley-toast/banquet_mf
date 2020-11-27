@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button } from '@toasttab/buffet-pui-buttons'
-import Parcel from 'single-spa-react/parcel'
-import { mountRootParcel } from 'single-spa'
+import { Parcel } from '@toasttab/banquet-tools'
 import MyApolloProvider from 'apollo_library_spa/MyApolloProvider'
 import Books from 'apollo_library_spa/Books'
 
@@ -34,8 +33,7 @@ export function App() {
           </p>
           <Parcel
             description='child_spa/Banquet loaded into a Parcel'
-            wrapClassName='p-4 bg-gray-50 rounded'
-            mountParcel={mountRootParcel}
+            className='p-4 bg-gray-50 rounded'
             config={() => import('child_spa/Banquet')}
           />
           <p>
@@ -44,8 +42,7 @@ export function App() {
           </p>
           <Parcel
             description='child_non_react_spa/Banquet loaded into a Parcel'
-            wrapClassName='p-4 bg-gray-50 rounded'
-            mountParcel={mountRootParcel}
+            className='p-4 bg-gray-50 rounded'
             config={() => import('child_non_react_spa/Banquet')}
           />
         </div>
@@ -61,11 +58,13 @@ export function App() {
           <Books />
         </div>
         <GridLayout
-          slotA={{ config: () => import('child_spa/Banquet') }}
+          slotA={{
+            config: () => import('child_spa/Banquet')
+          }}
           slotB={{ config: () => import('child_spa/Banquet') }}
           slotC={{
             config: () => import('child_non_react_spa/Banquet'),
-            props: { description: 'single-spa-html' }
+            description: 'single-spa-html'
           }}
         />
       </div>

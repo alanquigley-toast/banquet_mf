@@ -16,8 +16,12 @@
     "react-dom": "16.x"
   },
   "dependencies": {
+    "@toasttab/buffet-pui-buttons": "^0.3.3",
     "@toasttab/buffet-pui-loading-indicators": "^0.1.2",
+    "@toasttab/buffet-pui-text-input": "^0.2.2",
+    "react-query": "^2.26.3",
     "single-spa": "^5.8.2",
-    "single-spa-react": "^3.2.0"
+    "single-spa-react": "^3.2.0",
+    "zustand": "^3.2.0"
   }
 }
