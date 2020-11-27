@@ -1,5 +1,5 @@
-import { gql, useQuery } from '@apollo/client'
 import React from 'react'
+import { gql, useQuery } from '@apollo/client'
 
 export default function Books() {
   const GET_BOOKS = gql`
