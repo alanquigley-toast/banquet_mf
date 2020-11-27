@@ -6,7 +6,7 @@ module.exports = {
   mode: 'development',
   devServer: {
     quiet: true,
-    port: 8081,
+    port: 8083,
     hot: true
   },
   plugins: [
@@ -14,11 +14,12 @@ module.exports = {
       template: './public/index.html'
     }),
     new ModuleFederationPlugin({
-      name: 'child_spa',
+      name: 'apollo_library_spa',
       filename: 'remoteEntry.js',
-      library: { type: 'var', name: 'child_spa' },
+      library: { type: 'var', name: 'apollo_library_spa' },
       exposes: {
-        './Banquet': './src/Banquet'
+        './MyApolloProvider': './src/MyApolloProvider',
+        './Books': './src/Books'
       },
       shared: {
         react: {
