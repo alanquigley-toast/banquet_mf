@@ -23,6 +23,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@toasttab/buffet-pui-layouts": "^0.0.1",
     "@apollo/client": "^3.2.9",
     "@toasttab/buffet-pui-buttons": "^0.3.3",
     "@toasttab/buffet-pui-styles": "^0.3.2",
