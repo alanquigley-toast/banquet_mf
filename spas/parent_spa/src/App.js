@@ -4,7 +4,8 @@ import Parcel from 'single-spa-react/parcel'
 import { mountRootParcel } from 'single-spa'
 import MyApolloProvider from 'apollo_library_spa/MyApolloProvider'
 import Books from 'apollo_library_spa/Books'
-// import { GridLayout } from '@toasttab/buffet-pui-layouts'
+
+import { GridLayout } from '@toasttab/buffet-pui-layouts'
 
 // console.log(GridLayout)
 
@@ -61,7 +62,7 @@ export function App() {
           <p className='font-bold'>apollo_library_spa/Books</p>
           <Books />
         </div>
-        {/* <GridLayout slotA={{ name: 'child_spa/Banquet' }} /> */}
+        <GridLayout slotA={{ name: 'child_spa/Banquet' }} />
       </div>
     </MyApolloProvider>
   )

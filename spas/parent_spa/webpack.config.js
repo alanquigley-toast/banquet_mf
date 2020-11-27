@@ -42,19 +42,14 @@ module.exports = {
         },
         'react-dom': {
           singleton: true
-        },
-        '@toasttab/buffet-pui-styles': {
-          singleton: true
-        },
-        ...deps
-        // classnames: '^2.2.6'
+        }
       }
     })
   ],
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.m?jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
