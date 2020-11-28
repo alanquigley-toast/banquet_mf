@@ -8,17 +8,12 @@
     "build": "webpack"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.8",
-    "@babel/preset-env": "^7.12.7",
-    "@babel/preset-react": "^7.12.7",
-    "babel-loader": "^8.2.1",
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^5.0.1",
-    "html-webpack-plugin": "^5.0.0-alpha.14",
-    "style-loader": "^2.0.0",
+    "@toasttab/webpack-config": "0.0.1",
+    "postcss": "^8.1.10",
     "webpack": "^5.6.0",
     "webpack-cli": "^4.2.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.4.0"
   },
   "dependencies": {
     "single-spa-html": "^1.1.2"
