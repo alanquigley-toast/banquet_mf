@@ -4468,7 +4468,7 @@ cssfilter@0.0.10:
   resolved "https://nexus.eng.toasttab.com/repository/toast_npm/cssfilter/-/cssfilter-0.0.10.tgz#c6d2672632a2e5c83e013e6864a42ce8defd20ae"
   integrity sha1-xtJnJjKi5cg+AT5oZKQs6N79IK4=
 
-cuint@latest:
+cuint@^0.2.2, cuint@latest:
   version "0.2.2"
   resolved "https://nexus.eng.toasttab.com/repository/toast_npm/cuint/-/cuint-0.2.2.tgz#408086d409550c2631155619e9fa7bcadc3b991b"
   integrity sha1-QICG1AlVDCYxFVYZ6fp7ytw7mRs=
@@ -7717,7 +7717,7 @@ mime@2.3.1:
   resolved "https://nexus.eng.toasttab.com/repository/toast_npm/mime/-/mime-2.3.1.tgz#b1621c54d63b97c47d3cfe7f7215f7d64517c369"
   integrity sha512-OEUllcVoydBHGN1z84yfQDimn58pZNNNXgZlHXSboxMlFvgI6MXSWpWKpFRra7H1HxpVhHTkrghfRW49k6yjeg==
 
-mime@^2.4.4:
+mime@2.4.6, mime@^2.4.4:
   version "2.4.6"
   resolved "https://nexus.eng.toasttab.com/repository/toast_npm/mime/-/mime-2.4.6.tgz#e5b407c90db442f2beb5b162373d07b69affa4d1"
   integrity sha512-RZKhC3EmpBchfTGBVb8fb+RL2cWyw/32lshnsETttkBAyAUXSGHxbEJWWRXc751DrIxG1q04b8QwMbAwkRPpUA==
@@ -9246,6 +9246,16 @@ postcss-url@^10.1.0:
     mime "2.3.1"
     minimatch "3.0.4"
     xxhashjs "0.2.1"
+
+postcss-url@^10.1.1:
+  version "10.1.1"
+  resolved "https://nexus.eng.toasttab.com/repository/toast_npm/postcss-url/-/postcss-url-10.1.1.tgz#f58b4ec684a7b662c170357150eddcbc04cefa24"
+  integrity sha512-cYeRNcXUMiM1sr3UgHkY+zMuqhSmJaLeP3VOZWWqShBDMB10DlrK5KfciLK0LGr7xKDPP5nH7Q2odvDHQSrP9A==
+  dependencies:
+    make-dir "3.1.0"
+    mime "2.4.6"
+    minimatch "3.0.4"
+    xxhashjs "0.2.2"
 
 postcss-value-parser@^3.2.3, postcss-value-parser@^3.3.0:
   version "3.3.1"
@@ -12020,6 +12030,13 @@ xxhashjs@0.2.1:
   integrity sha1-m76b6JYUKXbfo0wGGy0GjEPTDeA=
   dependencies:
     cuint latest
+
+xxhashjs@0.2.2:
+  version "0.2.2"
+  resolved "https://nexus.eng.toasttab.com/repository/toast_npm/xxhashjs/-/xxhashjs-0.2.2.tgz#8a6251567621a1c46a5ae204da0249c7f8caa9d8"
+  integrity sha512-AkTuIuVTET12tpsVIQo+ZU6f/qDmKuRUcjaqR+OIvm+aCBsZ95i7UVY5WJ9TMsSaZ0DA2WxoZ4acu0sPH+OKAw==
+  dependencies:
+    cuint "^0.2.2"
 
 y18n@^4.0.0:
   version "4.0.0"
