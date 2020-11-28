@@ -1,6 +1,5 @@
 const { ModuleFederationPlugin } = require('webpack').container
 const deps = require('./package.json').dependencies
-
 const { merge } = require('webpack-merge')
 const { singleSpaBase } = require('@toasttab/webpack-config')
 

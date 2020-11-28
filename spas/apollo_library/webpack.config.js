@@ -1,73 +1,35 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
 const deps = require('./package.json').dependencies
+const { merge } = require('webpack-merge')
+const { singleSpaBase } = require('@toasttab/webpack-config')
 
-module.exports = {
-  mode: 'development',
-  devServer: {
-    quiet: true,
-    port: 8083,
-    hot: true,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers':
-        'X-Requested-With, content-type, Authorization'
-    }
-  },
-  output: {
-    publicPath: 'http://localhost:8083/',
-    libraryTarget: 'system'
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html'
-    }),
-    new ModuleFederationPlugin({
-      name: 'apollo_library_spa',
-      filename: 'remoteEntry.js',
-      // library: { type: 'var', name: 'apollo_library_spa' },
-      library: { type: 'system' },
-      exposes: {
-        './MyApolloProvider': './src/MyApolloProvider',
-        './Books': './src/Books'
-      },
-      shared: {
-        react: {
-          singleton: true
+module.exports = argv => {
+  return merge(singleSpaBase, {
+    output: {
+      publicPath: `http://localhost:${argv.port}/`
+    },
+    devServer: {
+      port: argv.port
+    },
+    plugins: [
+      new ModuleFederationPlugin({
+        name: 'apollo_library_spa',
+        filename: 'remoteEntry.js',
+        library: { type: 'system' },
+        exposes: {
+          './MyApolloProvider': './src/MyApolloProvider',
+          './Books': './src/Books'
         },
-        'react-dom': {
-          singleton: true
-        },
-        ...deps
-      }
-    })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.m?jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
+        shared: {
+          react: {
+            singleton: true
           },
-          'postcss-loader'
-        ]
-      }
+          'react-dom': {
+            singleton: true
+          },
+          ...deps
+        }
+      })
     ]
-  }
+  })
 }
