@@ -1,12 +1,19 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { ModuleFederationPlugin } = require('webpack').container
-const deps = require('./package.json').dependencies
+const path = require('path')
 
 module.exports = {
   mode: 'development',
+  entry: {
+    index: './src/index.js'
+  },
+  output: {
+    filename: 'bundle.js',
+    libraryTarget: 'system',
+    path: path.resolve(__dirname, 'dist')
+  },
+  devtool: 'inline-source-map',
   devServer: {
-    quiet: false,
-    port: 8082,
+    quiet: true,
     hot: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -15,41 +22,20 @@ module.exports = {
         'X-Requested-With, content-type, Authorization'
     }
   },
-  output: {
-    publicPath: 'http://localhost:8082/',
-    libraryTarget: 'system'
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html'
-    }),
-    new ModuleFederationPlugin({
-      name: 'child_non_react_spa',
-      filename: 'remoteEntry.js',
-      // library: { type: 'var', name: 'child_non_react_spa' },
-      library: { type: 'system' },
-      exposes: {
-        './Banquet': './src/Banquet'
-      },
-      shared: {
-        ...deps
-      }
     })
   ],
   module: {
     rules: [
       {
-        parser: {
-          system: false
-        }
-      },
-      {
-        test: /\.m?js$/,
+        test: /\.m?jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
       },

@@ -2,11 +2,12 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    
-    <title>Getting Started</title>
+  <title>Getting Started</title>
 
-    <script type="systemjs-importmap">
+  <meta charset="utf-8" />
+  <meta name="importmap-type" content="systemjs-importmap" />
+
+  <script type="systemjs-importmap">
           {
             "imports": {
               "parent_spa": "http://localhost:8080/remoteEntry.js",
@@ -22,15 +23,16 @@
               "apollo_library_spa/": "http://localhost:8083/"
             }
           }
-        </script>
+  </script>
 </head>
 
 <body>
-    <script src="https://unpkg.com/systemjs/dist/system.js"></script>
-    <div id="root"></div>
-        <script>
-          System.import('parent_spa/bundle.js')
-        </script>
+  <script src="https://unpkg.com/systemjs/dist/system.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/import-map-overrides/dist/import-map-overrides.js"></script>
+  <div id="root"></div>
+  <script>
+    System.import('parent_spa/bundle.js')
+  </script>
 </body>
 
 </html>

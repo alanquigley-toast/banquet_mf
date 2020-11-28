@@ -1,0 +1,21 @@
+{
+  "name": "@toasttab/webpack-config",
+  "version": "0.0.1",
+  "description": "Custom webpack configs",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "private": false,
+  "scripts": {
+    "build": "NODE_ENV=production rollup -c"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.8",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
+    "babel-loader": "^8.2.1",
+    "style-loader": "^2.0.0",
+    "postcss-loader": "^4.1.0",
+    "css-loader": "^5.0.1",
+    "html-webpack-plugin": "^5.0.0-alpha.14"
+  }
+}

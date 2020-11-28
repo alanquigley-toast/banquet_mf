@@ -15,7 +15,7 @@ const useStore = create(set => ({
   clearCurrentKey: key => set(state => ({ ...state, currentKey: null }))
 }))
 
-export const BanquetDevTools = ({ manifestImportMap }) => {
+export const BanquetDevTools = () => {
   const {
     importMap,
     currentKey,
@@ -36,7 +36,7 @@ export const BanquetDevTools = ({ manifestImportMap }) => {
       setImportMap(importMap.imports)
     })
     setCurrentOverrides(window.importMapOverrides.getOverrideMap().imports)
-  }, [manifestImportMap, setImportMap, setCurrentOverrides])
+  }, [setImportMap, setCurrentOverrides])
 
   return open ? (
     <div className='fixed z-50 shadow border bottom-0 w-full pt-8 pb-8 bg-white text-small'>

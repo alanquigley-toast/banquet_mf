@@ -1,18 +1,12 @@
-const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
-// const { classnames, ...deps } = require('./package.json').dependencies
 const deps = require('./package.json').dependencies
 
 module.exports = {
   mode: 'development',
-  entry: {
-    index: './src/index.js'
-  },
-  devtool: 'inline-source-map',
   devServer: {
     quiet: true,
-    port: 8080,
+    port: 8082,
     hot: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -22,48 +16,40 @@ module.exports = {
     }
   },
   output: {
-    filename: 'bundle.js',
-    libraryTarget: 'system',
-    publicPath: 'http://localhost:8080/',
-    path: path.resolve(__dirname, 'dist')
+    publicPath: 'http://localhost:8082/',
+    libraryTarget: 'system'
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
     new ModuleFederationPlugin({
-      name: 'parent_spa',
+      name: 'child_non_react_spa',
       filename: 'remoteEntry.js',
-      // This is required if you want to attach the library to the window object - with this
-      // approach care should be taken to avoid global naming conflicts.
-      // library: { type: 'var', name: 'parent_spa' },
+      // library: { type: 'var', name: 'child_non_react_spa' },
       library: { type: 'system' },
-      // By using the global we can specify the remoteEntry files in the html, rather than
-      // the webpack config. I believe this is a more suitable approach for Toast.
-      remotes: {
-        child_spa: 'child_spa',
-        child_non_react_spa: 'child_non_react_spa',
-        apollo_library_spa: 'apollo_library_spa'
+      exposes: {
+        './Banquet': './src/Banquet'
       },
       shared: {
-        react: {
-          singleton: true
-        },
-        'react-dom': {
-          singleton: true
-        }
+        ...deps
       }
     })
   ],
   module: {
     rules: [
       {
-        test: /\.m?jsx?$/,
+        parser: {
+          system: false
+        }
+      },
+      {
+        test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
+            presets: ['@babel/preset-env']
           }
         }
       },
