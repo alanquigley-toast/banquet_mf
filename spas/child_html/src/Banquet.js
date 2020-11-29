@@ -1,8 +1,11 @@
 import singleSpaHtml from 'single-spa-html'
 
 const htmlLifecycles = singleSpaHtml({
-  template: props => `<h1>HELLO, I am plain html, ${props.description}</h1>`
+  template: props =>
+    `<div class="p-4 rounded-lg bg-primary-25">
+      <h1 class="text-heading-3">Plain html template ${props.description}</h1>
+    </div>
+    `
 })
-export const bootstrap = htmlLifecycles.bootstrap
-export const mount = htmlLifecycles.mount
-export const unmount = htmlLifecycles.unmount
+
+export const { bootstrap, mount, unmount } = htmlLifecycles

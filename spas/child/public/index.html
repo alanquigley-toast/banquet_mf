@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8" />
-    <title>Getting Started</title>
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>Getting Started</title>
+        <meta name="importmap-type" content="systemjs-importmap" />
+        <script type="systemjs-importmap">
+            {
+                "imports": {
+                    "child_spa": "http://localhost:8081/remoteEntry.js",
+                    "child_spa/": "http://localhost:8081/"
+                }
+            }
+        </script>
+    </head>
 
-<body>
-    <div id="root"></div>
-</body>
+    <body>
+        <script src="https://unpkg.com/systemjs/dist/system.js"></script>
+        <div id="root"></div>
+        <script>
+            System.import('child_spa/bundle.js')
+        </script>
+    </body>
 
 </html>

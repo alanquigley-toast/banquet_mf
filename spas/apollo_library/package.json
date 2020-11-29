@@ -5,10 +5,23 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-cli serve --env port=8083",
-    "build": "webpack"
+    "build": "webpack",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@apollo/react-hooks": "^4.0.0",
+    "@babel/core": "^7.12.9",
+    "@storybook/addon-actions": "^6.1.8",
+    "@storybook/addon-essentials": "^6.1.8",
+    "@storybook/addon-links": "^6.1.8",
+    "@storybook/react": "^6.1.8",
+    "@toasttab/graphql-mocking": "^1.1.0",
     "@toasttab/webpack-config": "0.0.1",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-schema": "^1.2.5",
+    "babel-loader": "^8.2.2",
     "postcss": "^8.1.10",
     "webpack": "^5.6.0",
     "webpack-cli": "^4.2.0",

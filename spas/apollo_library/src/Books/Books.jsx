@@ -1,7 +1,7 @@
 import React from 'react'
 import { gql, useQuery } from '@apollo/client'
 
-export default function Books() {
+export function Books() {
   const GET_BOOKS = gql`
     query getBooks {
       books {

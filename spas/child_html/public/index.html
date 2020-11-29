@@ -4,10 +4,23 @@
 <head>
     <meta charset="utf-8" />
     <title>Getting Started</title>
+    <meta name="importmap-type" content="systemjs-importmap" />
+    <script type="systemjs-importmap">
+        {
+            "imports": {
+                "child_non_react_spa": "http://localhost:8082/remoteEntry.js",
+                "child_non_react_spa/": "http://localhost:8082/"
+            }
+        }
+    </script>
 </head>
 
 <body>
+    <script src="https://unpkg.com/systemjs/dist/system.js"></script>
     <div id="root"></div>
+    <script>
+        System.import('child_non_react_spa/bundle.js')
+    </script>
 </body>
 
 </html>

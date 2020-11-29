@@ -17,8 +17,8 @@ module.exports = argv => {
         filename: 'remoteEntry.js',
         library: { type: 'system' },
         exposes: {
-          './MyApolloProvider': './src/MyApolloProvider',
-          './Books': './src/Books'
+          './MyApolloProvider': './src/MyApolloProvider/MyApolloProvider.jsx',
+          './Books': './src/Books/Books.jsx'
         },
         shared: {
           react: {

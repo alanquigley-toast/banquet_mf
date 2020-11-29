@@ -26,7 +26,6 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'child_non_react_spa',
       filename: 'remoteEntry.js',
-      // library: { type: 'var', name: 'child_non_react_spa' },
       library: { type: 'system' },
       exposes: {
         './Banquet': './src/Banquet'

@@ -11,24 +11,23 @@
           {
             "imports": {
               "parent_spa": "http://localhost:8080/remoteEntry.js",
-              "parent_spa/": "http://localhost:8080/",
-              
               "child_spa": "http://localhost:8081/remoteEntry.js",
-              "child_spa/": "http://localhost:8081/",
-              
               "child_non_react_spa": "http://localhost:8082/remoteEntry.js",
-              "child_non_react_spa/": "http://localhost:8082/",
-              
               "apollo_library_spa": "http://localhost:8083/remoteEntry.js",
+              
+              "parent_spa/": "http://localhost:8080/",
+              "child_spa/": "http://localhost:8081/",
+              "child_non_react_spa/": "http://localhost:8082/",
               "apollo_library_spa/": "http://localhost:8083/"
             }
           }
   </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/import-map-overrides/dist/import-map-overrides.js"></script>
+  <import-map-overrides-full show-when-local-storage="devtools"></import-map-overrides-full>
 </head>
 
 <body>
   <script src="https://unpkg.com/systemjs/dist/system.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/import-map-overrides/dist/import-map-overrides.js"></script>
   <div id="root"></div>
   <script>
     System.import('parent_spa/bundle.js')

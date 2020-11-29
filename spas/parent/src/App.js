@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button } from '@toasttab/buffet-pui-buttons'
 import { Parcel } from '@toasttab/banquet-tools'
-import MyApolloProvider from 'apollo_library_spa/MyApolloProvider'
-import Books from 'apollo_library_spa/Books'
+import { MyApolloProvider } from 'apollo_library_spa/MyApolloProvider'
+import { Books } from 'apollo_library_spa/Books'
 
 import { GridLayout } from '@toasttab/buffet-pui-layouts'
 
@@ -42,7 +42,6 @@ export function App() {
           </p>
           <Parcel
             description='child_non_react_spa/Banquet loaded into a Parcel'
-            className='p-4 bg-gray-50 rounded'
             config={() => import('child_non_react_spa/Banquet')}
           />
         </div>
