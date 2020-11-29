@@ -21,6 +21,9 @@ module.exports = argv => {
           child_non_react_spa: 'child_non_react_spa',
           apollo_library_spa: 'apollo_library_spa'
         },
+        exposes: {
+          './Banquet': './src/banquet.js'
+        },
         shared: {
           react: {
             singleton: true

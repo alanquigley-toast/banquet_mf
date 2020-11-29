@@ -1,70 +1,28 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
 const deps = require('./package.json').dependencies
+const { merge } = require('webpack-merge')
+const { singleSpaBase } = require('@toasttab/webpack-config')
 
-module.exports = {
-  mode: 'development',
-  devServer: {
-    quiet: true,
-    port: 8082,
-    hot: true,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers':
-        'X-Requested-With, content-type, Authorization'
-    }
-  },
-  output: {
-    publicPath: 'http://localhost:8082/',
-    libraryTarget: 'system'
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html'
-    }),
-    new ModuleFederationPlugin({
-      name: 'child_non_react_spa',
-      filename: 'remoteEntry.js',
-      library: { type: 'system' },
-      exposes: {
-        './Banquet': './src/Banquet'
-      },
-      shared: {
-        ...deps
-      }
-    })
-  ],
-  module: {
-    rules: [
-      {
-        parser: {
-          system: false
+module.exports = argv => {
+  return merge(singleSpaBase, {
+    output: {
+      publicPath: `http://localhost:${argv.port}/`
+    },
+    devServer: {
+      port: argv.port
+    },
+    plugins: [
+      new ModuleFederationPlugin({
+        name: 'child_non_react_spa',
+        filename: 'remoteEntry.js',
+        library: { type: 'system' },
+        exposes: {
+          './Banquet': './src/banquet.js'
+        },
+        shared: {
+          ...deps
         }
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
-          },
-          'postcss-loader'
-        ]
-      }
+      })
     ]
-  }
+  })
 }

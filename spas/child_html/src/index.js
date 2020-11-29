@@ -1,1 +1,1 @@
-import('./Banquet')
+import('./banquet')

@@ -17,7 +17,7 @@ module.exports = argv => {
         filename: 'remoteEntry.js',
         library: { type: 'system' },
         exposes: {
-          './Banquet': './src/Banquet'
+          './Banquet': './src/banquet'
         },
         shared: {
           react: {
