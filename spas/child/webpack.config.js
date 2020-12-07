@@ -5,6 +5,9 @@ const { singleSpaBase } = require('@toasttab/webpack-config')
 
 module.exports = argv => {
   return merge(singleSpaBase, {
+    entry: {
+      index: './src/banquet.js'
+    },
     output: {
       publicPath: `http://localhost:${argv.port}/`
     },
@@ -17,7 +20,7 @@ module.exports = argv => {
         filename: 'remoteEntry.js',
         library: { type: 'system' },
         exposes: {
-          './Banquet': './src/banquet'
+          './Banquet': './src/banquet.js'
         },
         shared: {
           react: {

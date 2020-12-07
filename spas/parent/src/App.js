@@ -1,9 +1,8 @@
 import React from 'react'
 import { Button } from '@toasttab/buffet-pui-buttons'
-import { Parcel } from '@toasttab/banquet-tools'
+import { Parcel, ParcelLoader } from '@toasttab/banquet-tools'
 import { MyApolloProvider } from 'apollo_library_spa/MyApolloProvider'
 import { Books } from 'apollo_library_spa/Books'
-
 import { GridLayout } from '@toasttab/buffet-pui-layouts'
 
 export function App() {
@@ -34,7 +33,7 @@ export function App() {
           <Parcel
             description='child_spa/Banquet loaded into a Parcel'
             className='p-4 bg-gray-50 rounded'
-            config={() => import('child_spa/Banquet')}
+            config={() => import(`child_spa/Banquet`)}
           />
           <p>
             We easily mix multiple frameworks together with
@@ -67,6 +66,7 @@ export function App() {
           }}
         />
       </div>
+      <ParcelLoader name='child_spa' />
     </MyApolloProvider>
   )
 }

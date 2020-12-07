@@ -1,0 +1,13 @@
+#import "../fragments/UserValueFragment.gql"
+
+query GET_USERS {
+  users {
+    ...UserValues
+  }
+}
+
+mutation ADD_USER($user: UserInput!) {
+  addUser(user: $user) {
+    ...UserValues
+  }
+}

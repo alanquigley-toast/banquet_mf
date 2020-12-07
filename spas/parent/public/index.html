@@ -3,10 +3,8 @@
 
 <head>
   <title>Getting Started</title>
-
   <meta charset="utf-8" />
   <meta name="importmap-type" content="systemjs-importmap" />
-
   <script type="systemjs-importmap">
           {
             "imports": {
@@ -14,15 +12,13 @@
               "child_spa": "http://localhost:8081/remoteEntry.js",
               "child_non_react_spa": "http://localhost:8082/remoteEntry.js",
               "apollo_library_spa": "http://localhost:8083/remoteEntry.js",
-              
-              "parent_spa/": "http://localhost:8080/",
-              "child_spa/": "http://localhost:8081/",
-              "child_non_react_spa/": "http://localhost:8082/",
-              "apollo_library_spa/": "http://localhost:8083/"
+
+              "parent_spa/": "http://localhost:8080/"
             }
           }
   </script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/import-map-overrides/dist/import-map-overrides.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/import-map-overrides/dist/import-map-overrides.js"></script>
   <import-map-overrides-full show-when-local-storage="devtools"></import-map-overrides-full>
 </head>
 
